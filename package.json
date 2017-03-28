@@ -1,0 +1,12 @@
+{
+  "name": "code_central",
+  "dependencies": {
+    "uswds": "^1.0.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jfredrickson5/code_central.git"
+  },
+  "license": "CC0-1.0"
+}
