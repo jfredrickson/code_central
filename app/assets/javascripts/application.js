@@ -15,4 +15,4 @@
 //= require turbolinks
 //= require_tree .
 //
-//= require uswds/dist/js/uswds
+//= require js/uswds
