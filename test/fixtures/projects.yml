@@ -1,0 +1,37 @@
+# Open source, has repository, has license
+project_one:
+  name: Project One
+  repository: https://github.com/GSA/project-one
+  description: An awesome open source project.
+  license: https://github.com/GSA/project-one/LICENSE.md
+  open_source: 1
+  government_wide_reuse: 1
+  contact_email: project1@example.com
+  tags:
+    - foo
+    - bar
+
+# Closed source, has repository, has license
+project_two:
+  name: Project Two
+  repository: https://github.com/GSA/project-two
+  description: A closed source project.
+  license: https://github.com/GSA/project-two/LICENSE
+  open_source: 0
+  government_wide_reuse: 0
+  contact_email: project2@example.com
+  tags:
+    - bar
+    - baz
+
+# Closed source, no repository, no license
+project_three:
+  name: Project Three
+  repository:
+  description: Another closed source project.
+  license:
+  open_source: 0
+  government_wide_reuse: 0
+  contact_email: project3@example.com
+  tags:
+    - foo
