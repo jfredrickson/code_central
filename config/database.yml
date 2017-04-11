@@ -15,7 +15,7 @@ default: &default
   pool: 5
   username: code_central
   password: code_central
-  socket: /var/run/mysqld/mysqld.sock
+  host: localhost
 
 development:
   <<: *default
