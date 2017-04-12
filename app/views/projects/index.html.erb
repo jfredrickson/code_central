@@ -1,0 +1,56 @@
+<section class="usa-grid usa-section">
+
+  <table class="usa-table-borderless">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Repository</th>
+        <th>License</th>
+        <th>Open source?</th>
+        <th>Government-wide reuse?</th>
+        <th>Tags</th>
+        <th>Contact</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @projects.each do |project| %>
+        <tr>
+          <td>
+            <%= project.name %>
+          </td>
+          <td>
+            <%= project.description %>
+          </td>
+          <td>
+            <% if project.repository %>
+              <%= link_to "Repository", project.repository %>
+            <% else %>
+              None
+            <% end %>
+          </td>
+          <td>
+            <% if project.license %>
+              <%= link_to "License", project.license %>
+            <% else %>
+              None
+            <% end %>
+          </td>
+          <td>
+            <%= project.open_source == Project::OPEN_SOURCE ? "Yes" : "No" %>
+          </td>
+          <td>
+            <%= project.government_wide_reuse == Project::GOVERNMENT_WIDE_REUSE ? "Yes" : "No" %>
+          </td>
+          <td>
+            <%= project.tags.map(&:name).join ", " %>
+          </td>
+          <td>
+            <%= mail_to project.contact_email %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+</section>

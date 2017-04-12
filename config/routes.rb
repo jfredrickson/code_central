@@ -1,3 +1,5 @@
 Rails.application.routes.draw do
-  get 'pages/help'
+  resources :projects, only: [:index]
+  get "pages/help"
+  root "projects#index"
 end
