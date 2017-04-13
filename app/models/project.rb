@@ -7,6 +7,7 @@ class Project < ApplicationRecord
   NOT_GOVERNMENT_WIDE_REUSE = 0
 
   has_and_belongs_to_many :tags
+  belongs_to :source
 
   validates :name, presence: true
   validates :description, presence: true
@@ -16,6 +17,8 @@ class Project < ApplicationRecord
   validates :open_source, presence: true, inclusion: { in: [OPEN_SOURCE, CLOSED_SOURCE] }
   validates :government_wide_reuse, presence: true, inclusion: { in: [GOVERNMENT_WIDE_REUSE, NOT_GOVERNMENT_WIDE_REUSE] }
   validates :contact_email, presence: true, format: /.+@.+\..+/i
+  validates :source, presence: true
+  validates :source_identifier, presence: true
 
   def repository_required_if_open_source
     if !repository.present? && open_source == OPEN_SOURCE

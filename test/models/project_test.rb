@@ -71,4 +71,16 @@ class ProjectTest < ActiveSupport::TestCase
     project.contact_email = "not an email"
     assert !project.valid?
   end
+
+  test "projects should have a source" do
+    project = projects(:project_one)
+    project.source = nil
+    assert !project.valid?
+  end
+
+  test "projects should have a source identifier" do
+    project = projects(:project_one)
+    project.source_identifier = nil
+    assert !project.valid?
+  end
 end

@@ -10,6 +10,8 @@ project_one:
   tags:
     - foo
     - bar
+  source: github
+  source_identifier: 1111111
 
 # Closed source, has repository, has license
 project_two:
@@ -23,6 +25,8 @@ project_two:
   tags:
     - bar
     - baz
+  source: github
+  source_identifier: 2222222
 
 # Closed source, no repository, no license
 project_three:
@@ -35,3 +39,5 @@ project_three:
   contact_email: project3@example.com
   tags:
     - foo
+  source: manual
+  source_identifier: nil
