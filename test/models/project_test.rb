@@ -1,6 +1,26 @@
 require "test_helper"
 
 class ProjectTest < ActiveSupport::TestCase
+  setup do
+    @metadata = {
+      "name" => "Project_From_GitHub",
+      "description" => "Some new project metadata from GitHub",
+      "license" => nil,
+      "openSourceProject" => 1,
+      "governmentWideReuseProject" => 1,
+      "tags" => [
+        "baz",
+        "quux"
+      ],
+      "contact" => {
+        "email" => "contact@example.com"
+      },
+      "repository" => "https://github.com/GSA/project",
+      "organization" => "GSA"
+    }
+    @github_source = Source.new(name: "GitHub")
+  end
+
   test "projects require a name" do
     project = projects(:project_one)
     project.name = nil
@@ -82,5 +102,24 @@ class ProjectTest < ActiveSupport::TestCase
     project = projects(:project_one)
     project.source_identifier = nil
     assert !project.valid?
+  end
+
+  test "an existing project can be updated from metadata" do
+    project = projects(:project_one)
+    project.update_from_metadata(@metadata)
+    assert project.valid?
+    assert_equal "Project_From_GitHub", project.name
+    assert_includes project.tags, tags(:baz)
+    assert project.tags.select { |t| t.name == "quux" }.any?
+    assert_equal "contact@example.com", project.contact_email
+  end
+
+  test "a new project can be initialized from metadata" do
+    project = Project.new_from_metadata(@metadata, @github_source, 3333333)
+    assert project.valid?
+    assert_equal "Project_From_GitHub", project.name
+    assert_includes project.tags, tags(:baz)
+    assert project.tags.select { |t| t.name == "quux" }.any?
+    assert_equal "contact@example.com", project.contact_email
   end
 end

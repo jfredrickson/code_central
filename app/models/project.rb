@@ -25,4 +25,27 @@ class Project < ApplicationRecord
       errors.add(:repository, "required if project is open source")
     end
   end
+
+  def update_from_metadata(metadata)
+    self.name = metadata["name"]
+    self.description = metadata["description"]
+    self.repository = metadata["repository"]
+    self.license = metadata["license"]
+    self.open_source = metadata["openSourceProject"]
+    self.government_wide_reuse = metadata["governmentWideReuseProject"]
+    self.contact_email = metadata.dig("contact", "email")
+    new_tags = []
+    metadata["tags"].each do |tag_name|
+      new_tags << Tag.find_or_create_by(name: tag_name)
+    end
+    self.tags = new_tags
+  end
+
+  def self.new_from_metadata(metadata, metadata_source, source_identifier)
+    Project.new do |p|
+      p.update_from_metadata(metadata)
+      p.source = metadata_source
+      p.source_identifier = source_identifier
+    end
+  end
 end

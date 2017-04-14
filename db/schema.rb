@@ -10,20 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170413200554) do
+ActiveRecord::Schema.define(version: 20170414154437) do
 
   create_table "projects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "name",                  null: false
+    t.string   "name",                                null: false
     t.string   "repository"
-    t.string   "description",           null: false
+    t.text     "description",           limit: 65535, null: false
     t.string   "license"
-    t.integer  "open_source",           null: false
-    t.integer  "government_wide_reuse", null: false
-    t.string   "contact_email",         null: false
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.integer  "open_source",                         null: false
+    t.integer  "government_wide_reuse",               null: false
+    t.string   "contact_email",                       null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.integer  "source_id"
     t.string   "source_identifier"
+    t.datetime "harvested_at"
     t.index ["source_id"], name: "index_projects_on_source_id", using: :btree
   end
 
