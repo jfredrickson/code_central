@@ -21,3 +21,6 @@
 
 # Ignore local environment variables
 .env
+
+# Ignore code coverage results
+/coverage
