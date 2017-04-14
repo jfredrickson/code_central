@@ -16,7 +16,7 @@ class Project < ApplicationRecord
   validates :license, presence: true, format: URI::regexp(%w(http https)), allow_nil: true
   validates :open_source, presence: true, inclusion: { in: [OPEN_SOURCE, CLOSED_SOURCE] }
   validates :government_wide_reuse, presence: true, inclusion: { in: [GOVERNMENT_WIDE_REUSE, NOT_GOVERNMENT_WIDE_REUSE] }
-  validates :contact_email, presence: true, format: /.+@.+\..+/i
+  validates :contact_email, presence: true, format: /\A.+@.+\..+\z/i
   validates :source, presence: true
   validates :source_identifier, presence: true
 
