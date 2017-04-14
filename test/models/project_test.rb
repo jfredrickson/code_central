@@ -113,13 +113,4 @@ class ProjectTest < ActiveSupport::TestCase
     assert project.tags.select { |t| t.name == "quux" }.any?
     assert_equal "contact@example.com", project.contact_email
   end
-
-  test "a new project can be initialized from metadata" do
-    project = Project.new_from_metadata(@metadata, @github_source, 3333333)
-    assert project.valid?
-    assert_equal "Project_From_GitHub", project.name
-    assert_includes project.tags, tags(:baz)
-    assert project.tags.select { |t| t.name == "quux" }.any?
-    assert_equal "contact@example.com", project.contact_email
-  end
 end

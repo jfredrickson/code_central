@@ -41,12 +41,4 @@ class Project < ApplicationRecord
     end
     self.tags = new_tags
   end
-
-  def self.new_from_metadata(metadata, metadata_source, source_identifier)
-    Project.new do |p|
-      p.update_from_metadata(metadata)
-      p.source = metadata_source
-      p.source_identifier = source_identifier
-    end
-  end
 end
