@@ -35,7 +35,6 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'octokit', '~> 4.7'
 gem 'codeinventory', '~> 0.2'
 gem 'codeinventory-github', '~> 0.2'
 

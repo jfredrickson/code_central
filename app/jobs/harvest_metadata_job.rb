@@ -1,4 +1,3 @@
-require "octokit"
 require "codeinventory"
 require "codeinventory/github"
 
