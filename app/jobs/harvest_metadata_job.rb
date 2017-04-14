@@ -6,62 +6,52 @@ class HarvestMetadataJob < ApplicationJob
   queue_as :default
 
   def perform(*args)
-    auth = find_auth
-    Rails.logger.error("No authentication info found") && return if auth.nil?
+    @auth = find_auth
+    @org = find_org
+    @inventory = CodeInventory::GitHub::Source.new(@auth, @org)
+    @github_source = Source.find_by(name: "GitHub")
 
-    org = find_org
-    Rails.logger.error("No organization found") && return if org.nil?
+    Rails.logger.error("No authentication info found") && return if @auth.nil?
+    Rails.logger.error("No organization found") && return if @org.nil?
 
-    repos_for_update = []
-    repos_for_create = []
-    github_source = Source.find_by(name: "GitHub")
+    create_count = 0
+    update_count = 0
+    error_count = 0
 
-    repositories(auth, org).each do |repo|
-      project = Project.find_by(source: github_source, source_identifier: repo[:id])
-      if project.nil?
-        Rails.logger.info("New repository: #{repo[:full_name]}")
-        repos_for_create << repo
-      else
-        if project.harvested_at == nil || project.harvested_at < repo[:updated_at]
-          Rails.logger.info("Updated repository: #{repo[:full_name]}")
-          repos_for_update << repo
+    repositories.each do |repo|
+      project = Project.find_or_initialize_by(source: @github_source, source_identifier: repo[:id])
+      new_project = !project.persisted?
+      if project.harvested_at == nil || project.harvested_at < repo[:updated_at]
+        if create_or_update(project, repo)
+          if new_project
+            Rails.logger.info("Created: #{project.name}")
+            create_count += 1
+          else
+            Rails.logger.info("Updated: #{project.name}")
+            update_count += 1
+          end
+        else
+          Rails.logger.error("Invalid metadata in repo: #{repo[:full_name]} (#{project.name})")
+          error_count += 1
         end
       end
     end
 
-    Rails.logger.info("New repositories found: #{repos_for_create.count}")
-    Rails.logger.info("Updated repositories found: #{repos_for_update.count}")
-
-    github_inventory = CodeInventory::GitHub::Source.new(auth, org)
-
-    repos_for_update.each do |repo_for_update|
-      metadata = github_inventory.project(repo_for_update[:full_name])
-      project = Project.find_by(source: github_source, source_identifier: repo_for_update[:id])
-      project.update_from_metadata(metadata)
-      project.harvested_at = DateTime.now
-      if project.save
-        Rails.logger.info("Updated: #{project.name}")
-      else
-        Rails.logger.error("Invalid project: #{project.name} (#{repo_for_update[:full_name]})")
-      end
-    end
-
-    repos_for_create.each do |repo_for_create|
-      metadata = github_inventory.project(repo_for_create[:full_name])
-      project = Project.new_from_metadata(metadata, github_source, repo_for_create[:id])
-      project.harvested_at = DateTime.now
-      if project.save
-        Rails.logger.info("Created: #{project.name}")
-      else
-        Rails.logger.error("Invalid project: #{project.name} (#{repo_for_create[:full_name]})")
-      end
-    end
+    Rails.logger.info("New projects created: #{create_count}")
+    Rails.logger.info("Existing projects updated: #{update_count}")
+    Rails.logger.info("Repository metadata errors: #{error_count}")
   end
 
-  def repositories(auth, org)
-    Octokit.auto_paginate = true
-    client = Octokit::Client.new(auth)
-    client.org_repos(org)
+  def create_or_update(project, repo)
+    metadata = @inventory.project(repo[:full_name])
+    new_project = !project.persisted?
+    project.update_from_metadata(metadata)
+    project.harvested_at = DateTime.now
+    return project.save
+  end
+
+  def repositories
+    @inventory.client.org_repos(@org)
   end
 
   def find_auth
