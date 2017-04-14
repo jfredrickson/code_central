@@ -5,7 +5,7 @@ require "codeinventory/github"
 class HarvestMetadataJob < ApplicationJob
   queue_as :default
 
-  def perform(*args)
+  def perform(*)
     @auth = find_auth
     @org = find_org
     @inventory = CodeInventory::GitHub::Source.new(@auth, @org)
@@ -20,8 +20,8 @@ class HarvestMetadataJob < ApplicationJob
 
     repositories.each do |repo|
       project = Project.find_or_initialize_by(source: @github_source, source_identifier: repo[:id])
-      new_project = !project.persisted?
-      if project.harvested_at == nil || project.harvested_at < repo[:updated_at]
+      new_project = project.new_record?
+      if project.harvested_at.nil? || project.harvested_at < repo[:updated_at]
         if create_or_update(project, repo)
           if new_project
             Rails.logger.info("Created: #{project.name}")
@@ -44,10 +44,9 @@ class HarvestMetadataJob < ApplicationJob
 
   def create_or_update(project, repo)
     metadata = @inventory.project(repo[:full_name])
-    new_project = !project.persisted?
     project.update_from_metadata(metadata)
     project.harvested_at = DateTime.now
-    return project.save
+    project.save
   end
 
   def repositories
@@ -68,8 +67,6 @@ class HarvestMetadataJob < ApplicationJob
   end
 
   def find_org
-    org_env = ENV["GITHUB_ORG"]
-    return nil if org_env.nil?
-    org_env
+    ENV["GITHUB_ORG"]
   end
 end
