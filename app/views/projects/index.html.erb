@@ -9,6 +9,7 @@
         <th>License</th>
         <th>Open source?</th>
         <th>Government-wide reuse?</th>
+        <th>Organization</th>
         <th>Tags</th>
         <th>Contact</th>
       </tr>
@@ -41,6 +42,9 @@
           </td>
           <td>
             <%= project.government_wide_reuse == Project::GOVERNMENT_WIDE_REUSE ? "Yes" : "No" %>
+          </td>
+          <td>
+            <%= project.organization %>
           </td>
           <td>
             <%= project.tags.map(&:name).join ", " %>

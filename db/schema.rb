@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170414154437) do
+ActiveRecord::Schema.define(version: 20170414195445) do
 
   create_table "projects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",                                null: false
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20170414154437) do
     t.integer  "source_id"
     t.string   "source_identifier"
     t.datetime "harvested_at"
+    t.string   "organization"
     t.index ["source_id"], name: "index_projects_on_source_id", using: :btree
   end
 

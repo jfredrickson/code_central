@@ -34,6 +34,7 @@ class Project < ApplicationRecord
     self.open_source = metadata["openSourceProject"]
     self.government_wide_reuse = metadata["governmentWideReuseProject"]
     self.contact_email = metadata.dig("contact", "email")
+    self.organization = metadata["organization"]
     new_tags = []
     metadata["tags"].each do |tag_name|
       new_tags << Tag.find_or_create_by(name: tag_name)
