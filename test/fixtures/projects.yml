@@ -12,6 +12,7 @@ project_one:
     - bar
   source: github
   source_identifier: 1111111
+  harvested_at: 2016-11-04T21:37:41Z
 
 # Closed source, has repository, has license
 project_two:
@@ -27,6 +28,7 @@ project_two:
     - baz
   source: github
   source_identifier: 2222222
+  harvested_at: 2016-09-16T10:47:36Z
 
 # Closed source, no repository, no license
 project_three:
@@ -41,3 +43,4 @@ project_three:
     - foo
   source: manual
   source_identifier: nil
+  harvested_at: 2016-09-16T10:47:36Z

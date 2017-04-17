@@ -35,6 +35,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'octokit', '~> 4.7'
 gem 'codeinventory', '~> 0.2'
 gem 'codeinventory-github', '~> 0.2'
 
@@ -54,6 +55,7 @@ end
 
 group :test do
   gem 'simplecov', require: false
+  gem 'mocha', '~> 1.2'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
