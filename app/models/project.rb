@@ -41,4 +41,17 @@ class Project < ApplicationRecord
     end
     self.tags = new_tags
   end
+
+  # Format the project's JSON based on the Code.gov schema.
+  def as_json(options = {})
+    data = super(only: [:name, :description, :repository, :license, :organization, :tags])
+    data.merge({
+      "openSourceProject" => self.open_source,
+      "governmentWideReuseProject" => self.government_wide_reuse,
+      "contact" => {
+        "email" => self.contact_email
+      },
+      "tags" => self.tags.map { |t| t.name }
+    })
+  end
 end
