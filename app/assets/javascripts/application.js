@@ -17,3 +17,14 @@
 //
 //= require js/uswds
 //= require Chart
+
+var CodeCentral = CodeCentral || {};
+
+/**
+ * Return the current page's identifier in the format 'controller#action'.
+ */
+CodeCentral.page = function () {
+  var controller = $("body").data("controller");
+  var action = $("body").data("action");
+  return controller + "#" + action;
+};

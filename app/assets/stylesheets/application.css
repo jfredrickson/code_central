@@ -17,6 +17,10 @@
  */
 
 table caption {
-  font-size: 90%;
+  font-weight: bold;
   margin: 0.5em 0;
+}
+
+table tr.totals * {
+  font-weight: bold;
 }
