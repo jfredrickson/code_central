@@ -1,6 +1,7 @@
 {
   "name": "code_central",
   "dependencies": {
+    "chart.js": "^2.5.0",
     "uswds": "^1.0.0"
   },
   "devDependencies": {},
