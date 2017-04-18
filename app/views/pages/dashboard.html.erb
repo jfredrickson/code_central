@@ -2,8 +2,64 @@
 
   <h1>Dashboard</h1>
 
-  <p>Projects: <%= @project_count %></p>
-  <p>Open source: <%= @open_source_count %> (<%= number_to_percentage(100 * @open_source_count.to_f / @project_count.to_f) %>)</p>
-  <p>Government wide reuse: <%= @government_wide_reuse_count %> (<%= number_to_percentage(100 * @government_wide_reuse_count.to_f / @project_count.to_f) %>)</p>
+  <div class="usa-width-one-half">
+    <table id="projects-openness">
+      <caption>Projects by openness</caption>
+      <thead>
+        <tr>
+          <th scope="col">Type</th>
+          <th scope="col"># Projects</th>
+          <th scope="col">% Projects</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Open source</th>
+          <td><%= @open_source_count %></td>
+          <td><%= number_to_percentage(100 * @open_source_count / @project_count.to_f, precision: 2) %></td>
+        </tr>
+        <tr>
+          <th scope="row">Closed source</th>
+          <td><%= @closed_source_count %></td>
+          <td><%= number_to_percentage(100 * @closed_source_count / @project_count.to_f, precision: 2) %></td>
+        </tr>
+        <tr>
+          <th scope="row">Total</th>
+          <td><%= @project_count %></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="usa-width-one-half">
+    <table id="projects-reuse">
+      <caption>Projects by government-wide reuse</caption>
+      <thead>
+        <tr>
+          <th scope="col">Type</th>
+          <th scope="col"># Projects</th>
+          <th scope="col">% Projects</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">For government-wide reuse</th>
+          <td><%= @gov_reuse_count %></td>
+          <td><%= number_to_percentage(100 * @gov_reuse_count / @project_count.to_f, precision: 2) %></td>
+        </tr>
+        <tr>
+          <th scope="row">Not for government-wide reuse</th>
+          <td><%= @non_gov_reuse_count %></td>
+          <td><%= number_to_percentage(100 * @non_gov_reuse_count / @project_count.to_f, precision: 2) %></td>
+        </tr>
+        <tr>
+          <th scope="row">Total</th>
+          <td><%= @project_count %></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
 </section>
