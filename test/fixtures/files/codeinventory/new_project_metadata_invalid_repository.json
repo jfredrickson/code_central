@@ -1,0 +1,15 @@
+{
+  "name": "New Project",
+  "repository": null,
+  "description": "A brand new project!",
+  "license": "https://github.com/GSA/new-project/LICENSE.md",
+  "openSourceProject": 1,
+  "governmentWideReuseProject": 1,
+  "tags": [
+    "foo",
+    "bar"
+  ],
+  "contact": {
+    "email": "newproject@example.com"
+  }
+}
