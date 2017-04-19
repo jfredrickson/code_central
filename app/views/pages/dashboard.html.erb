@@ -22,12 +22,12 @@
         <tr>
           <th id="open-source-label" scope="row">Open source</th>
           <td id="open-source-value"><%= @open_source_count %></td>
-          <td id="open-source-percentage"><%= number_to_percentage(100 * @open_source_count / @project_count.to_f, precision: 2) %></td>
+          <td><%= number_to_percentage(100 * @open_source_count / @project_count.to_f, precision: 2) %></td>
         </tr>
         <tr>
           <th id="closed-source-label" scope="row">Closed source</th>
           <td id="closed-source-value"><%= @closed_source_count %></td>
-          <td id="closed-source-percentage"><%= number_to_percentage(100 * @closed_source_count / @project_count.to_f, precision: 2) %></td>
+          <td><%= number_to_percentage(100 * @closed_source_count / @project_count.to_f, precision: 2) %></td>
         </tr>
         <tr class="totals">
           <th scope="row">Total</th>
