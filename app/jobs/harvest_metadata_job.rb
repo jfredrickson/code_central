@@ -1,8 +1,9 @@
 class HarvestMetadataJob < ApplicationJob
   queue_as :default
 
-  def perform(org)
-    if Rails.application.secrets.github_auth.nil?
+  def perform(org, project_org = nil)
+    auth = Rails.application.secrets.github_auth
+    if auth.nil?
       err = "No authentication info found"
       Rails.logger.error(err)
       raise err
@@ -13,7 +14,7 @@ class HarvestMetadataJob < ApplicationJob
     update_count = 0
     error_count = 0
 
-    harvester = MetadataHarvester.new(org, Rails.application.secrets.github_auth)
+    harvester = MetadataHarvester.new(org, auth, project_org)
     harvester.harvest do |status|
       repo_count += 1
       if status.valid?
