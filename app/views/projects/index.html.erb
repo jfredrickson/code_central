@@ -35,13 +35,15 @@
             <%= project.organization %>
           </td>
           <td>
-            <% if project.repository %>
-              <div><%= link_to "Repository", project.repository %></div>
-            <% end %>
-            <% if project.license %>
-              <div><%= link_to "License", project.license %></div>
-            <% end %>
-            <div><%= mail_to project.contact_email, "Email" %></div>
+            <div class="project-table-links">
+              <% if project.repository %>
+                <div><%= link_to "Repository", project.repository %></div>
+              <% end %>
+              <% if project.license %>
+                <div><%= link_to "License", project.license %></div>
+              <% end %>
+              <div><%= mail_to project.contact_email, "Email" %></div>
+            </div>
           </td>
         </tr>
       <% end %>
