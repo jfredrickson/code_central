@@ -40,6 +40,6 @@ $(document).on("turbolinks:load", function () {
       [$("#reuse-label").text(), $("#non-reuse-label").text()],
       [$("#reuse-value").text(), $("#non-reuse-value").text()]);
     $("#project-reuse-legend").html(reuseChart.generateLegend());
-  };
+  }
 
 });
