@@ -18,7 +18,6 @@ class Project < ApplicationRecord
   validates :government_wide_reuse, presence: true, inclusion: { in: [GOVERNMENT_WIDE_REUSE, NOT_GOVERNMENT_WIDE_REUSE] }
   validates :contact_email, presence: true, format: /\A.+@.+\..+\z/i
   validates :source, presence: true
-  validates :source_identifier, presence: true
 
   def repository_required_if_open_source
     if !repository.present? && open_source == OPEN_SOURCE

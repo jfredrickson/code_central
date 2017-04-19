@@ -98,12 +98,6 @@ class ProjectTest < ActiveSupport::TestCase
     assert !project.valid?
   end
 
-  test "projects should have a source identifier" do
-    project = projects(:project_one)
-    project.source_identifier = nil
-    assert !project.valid?
-  end
-
   test "an existing project can be updated from metadata" do
     project = projects(:project_one)
     project.update_from_metadata(@metadata)
