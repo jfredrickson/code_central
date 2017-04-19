@@ -13,13 +13,31 @@ class MetadataHarvesterTest < ActiveSupport::TestCase
 
   test "requires an org name" do
     assert_raise ArgumentError do
-      MetadataHarvester.new(nil, {})
+      MetadataHarvester.new(nil, { access_token: "abc123" })
     end
   end
 
   test "requires authentication data" do
     assert_raise ArgumentError do
       MetadataHarvester.new("org", nil)
+    end
+  end
+
+  test "rejects invalid authentication data" do
+    assert_raise ArgumentError do
+      MetadataHarvester.new("org", { client_id: "missing_client_secret" })
+    end
+  end
+
+  test "accepts an access token for authentication" do
+    assert_nothing_raised do
+      MetadataHarvester.new("org", { access_token: "abc123" })
+    end
+  end
+
+  test "accepts client id/secret for authentication" do
+    assert_nothing_raised do
+      MetadataHarvester.new("org", { client_id: "abc123", client_secret: "abc123" })
     end
   end
 
