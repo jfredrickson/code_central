@@ -3,39 +3,27 @@
   <table class="usa-table-borderless">
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Repository</th>
-        <th>License</th>
+        <th>Project</th>
         <th>Open source?</th>
         <th>Government-wide reuse?</th>
         <th>Organization</th>
-        <th>Tags</th>
-        <th>Contact</th>
+        <th>Links</th>
       </tr>
     </thead>
     <tbody>
       <% @projects.each do |project| %>
         <tr>
           <td>
-            <%= project.name %>
-          </td>
-          <td>
-            <%= project.description %>
-          </td>
-          <td>
-            <% if project.repository %>
-              <%= link_to "Repository", project.repository %>
-            <% else %>
-              None
-            <% end %>
-          </td>
-          <td>
-            <% if project.license %>
-              <%= link_to "License", project.license %>
-            <% else %>
-              None
-            <% end %>
+            <div><%= project.name %></div>
+            <div class="project-table-description">
+              <small><%= project.description %></small>
+            </div>
+            <div>
+              <span class="usa-sr-only">Tags:</span>
+              <% project.tags.each do |tag| %>
+                <span class="usa-label"><%= tag.name %></span>
+              <% end %>
+            </div>
           </td>
           <td>
             <%= project.open_source == Project::OPEN_SOURCE ? "Yes" : "No" %>
@@ -47,10 +35,13 @@
             <%= project.organization %>
           </td>
           <td>
-            <%= project.tags.map(&:name).join ", " %>
-          </td>
-          <td>
-            <%= mail_to project.contact_email %>
+            <% if project.repository %>
+              <div><%= link_to "Repository", project.repository %></div>
+            <% end %>
+            <% if project.license %>
+              <div><%= link_to "License", project.license %></div>
+            <% end %>
+            <div><%= mail_to project.contact_email, "Contact email" %></div>
           </td>
         </tr>
       <% end %>
