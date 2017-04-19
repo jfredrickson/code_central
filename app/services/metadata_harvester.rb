@@ -45,7 +45,7 @@ class MetadataHarvester
   end
 
   def source(source_name)
-    Source.find_by(name: "GitHub")
+    Source.find_by(name: source_name)
   end
 
   # Creates/updates a project with metadata from CodeInventory
