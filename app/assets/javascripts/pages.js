@@ -5,9 +5,12 @@ $(document).on("turbolinks:load", function () {
     var chart = function (datasetName) {
       var $datasetSource = $("table[data-dataset='" + datasetName + "']");
       var $canvas = $(".chart[data-dataset='" + datasetName + "']");
-      var backgroundColor = ["#4773aa", "#f9c642"];
+      var chartColors = ["#205493", "#fdb81e", "#2e8540", "#e31c3d", "#02bfe7"];
       var labels = [];
       var values = [];
+      $datasetSource.find(".chart-legend-color").each(function (index) {
+        $(this).css("background-color", chartColors[index]);
+      });
       $datasetSource.find(".chart-label").each(function () {
         labels.push($(this).text());
       });
@@ -18,7 +21,7 @@ $(document).on("turbolinks:load", function () {
         type: "pie",
         data: {
           labels: labels,
-          datasets: [{ data: values, backgroundColor: backgroundColor }]
+          datasets: [{ data: values, backgroundColor: chartColors }]
         },
         options: {
           legend: {
