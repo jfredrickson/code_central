@@ -15,7 +15,7 @@ $(document).on("turbolinks:load", function () {
         values.push($(this).text());
       });
       return new Chart($canvas, {
-        type: "doughnut",
+        type: "pie",
         data: {
           labels: labels,
           datasets: [{ data: values, backgroundColor: backgroundColor }]
