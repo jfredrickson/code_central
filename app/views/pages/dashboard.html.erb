@@ -1,16 +1,15 @@
 <section class="usa-grid usa-section">
 
-  <h1>Dashboard</h1>
-
   <div class="usa-width-one-half">
 
+    <h2 class="chart-title">Open or Closed Source</h2>
+
     <div class="chart-wrapper">
-      <canvas id="project-openness-chart"></canvas>
-      <div id="project-openness-legend"></div>
+      <canvas class="chart" data-dataset="project-openness"></canvas>
     </div>
 
-    <table id="project-openness-table">
-      <caption>Projects by openness</caption>
+    <table data-dataset="project-openness">
+      <caption>Projects by Open or Closed Source</caption>
       <thead>
         <tr>
           <th scope="col">Source Code Type</th>
@@ -20,14 +19,14 @@
       </thead>
       <tbody>
         <tr>
-          <th id="open-source-label" scope="row">Open source</th>
-          <td id="open-source-value"><%= @open_source_count %></td>
-          <td><%= number_to_percentage(100 * @open_source_count / @project_count.to_f, precision: 2) %></td>
+          <th class="chart-label" scope="row">Open source</th>
+          <td class="chart-value"><span class="chart-legend-color" style="background-color: #4773aa">&nbsp;</span><%= @open_source_count %></td>
+          <td><span class="chart-legend-color" style="background-color: #4773aa">&nbsp;</span><%= number_to_percentage(100 * @open_source_count / @project_count.to_f, precision: 2) %></td>
         </tr>
         <tr>
-          <th id="closed-source-label" scope="row">Closed source</th>
-          <td id="closed-source-value"><%= @closed_source_count %></td>
-          <td><%= number_to_percentage(100 * @closed_source_count / @project_count.to_f, precision: 2) %></td>
+          <th class="chart-label" scope="row">Closed source</th>
+          <td class="chart-value"><span class="chart-legend-color" style="background-color: #f9c642">&nbsp;</span><%= @closed_source_count %></td>
+          <td><span class="chart-legend-color" style="background-color: #f9c642">&nbsp;</span><%= number_to_percentage(100 * @closed_source_count / @project_count.to_f, precision: 2) %></td>
         </tr>
         <tr class="totals">
           <th scope="row">Total</th>
@@ -41,30 +40,31 @@
 
   <div class="usa-width-one-half">
 
+    <h2 class="chart-title">Government Reuse</h2>
+
     <div class="chart-wrapper">
-      <canvas id="project-reuse-chart"></canvas>
-      <div id="project-reuse-legend"></div>
+      <canvas class="chart" data-dataset="project-reuse"></canvas>
     </div>
 
-    <table id="project-reuse-table">
-      <caption>Projects by government-wide reuse</caption>
+    <table data-dataset="project-reuse">
+      <caption>Projects by Government Reuse</caption>
       <thead>
         <tr>
-          <th scope="col">Reuse Type</th>
+          <th scope="col">Government-wide Reuse</th>
           <th scope="col"># Projects</th>
           <th scope="col">% Projects</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <th id="reuse-label" scope="row">For government-wide reuse</th>
-          <td id="reuse-value"><%= @gov_reuse_count %></td>
-          <td><%= number_to_percentage(100 * @gov_reuse_count / @project_count.to_f, precision: 2) %></td>
+          <th class="chart-label" scope="row">Yes</th>
+          <td class="chart-value"><span class="chart-legend-color" style="background-color: #4773aa">&nbsp;</span><%= @gov_reuse_count %></td>
+          <td><span class="chart-legend-color" style="background-color: #4773aa">&nbsp;</span><%= number_to_percentage(100 * @gov_reuse_count / @project_count.to_f, precision: 2) %></td>
         </tr>
         <tr>
-          <th id="non-reuse-label" scope="row">Not for government-wide reuse</th>
-          <td id="non-reuse-value"><%= @non_gov_reuse_count %></td>
-          <td><%= number_to_percentage(100 * @non_gov_reuse_count / @project_count.to_f, precision: 2) %></td>
+          <th class="chart-label" scope="row">No</th>
+          <td class="chart-value"><span class="chart-legend-color" style="background-color: #f9c642">&nbsp;</span><%= @non_gov_reuse_count %></td>
+          <td><span class="chart-legend-color" style="background-color: #f9c642">&nbsp;</span><%= number_to_percentage(100 * @non_gov_reuse_count / @project_count.to_f, precision: 2) %></td>
         </tr>
         <tr class="totals">
           <th scope="row">Total</th>
