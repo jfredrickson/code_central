@@ -6,7 +6,9 @@
   <title>CodeCentral</title>
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag    '/vendor/uswds/css/uswds', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag '/vendor/uswds/js/uswds', 'data-turbolinks-track': 'reload' %>
 </head>
 <body data-controller="<%= controller_name %>" data-action="<%= action_name %>" class="<%= "#{controller_name}-#{action_name}" %>">
   <a class="usa-skipnav" href="#main-content">Skip to main content</a>
@@ -16,7 +18,7 @@
       <div class="usa-accordion">
         <header class="usa-banner-header">
           <div class="usa-grid usa-banner-inner">
-            <%= image_tag "img/favicons/favicon-57.png", alt: "U.S. flag" %>
+            <%= image_tag "/vendor/uswds/img/favicons/favicon-57.png", alt: "U.S. flag" %>
             <p>An official website of the United States government</p>
             <button class="usa-accordion-button usa-banner-button" aria-expanded="false" aria-controls="gov-banner">
               <span class="usa-banner-button-text">Here's how you know</span>
@@ -25,7 +27,7 @@
         </header>
         <div class="usa-banner-content usa-grid usa-accordion-content" id="gov-banner">
           <div class="usa-banner-guidance-gov usa-width-one-half">
-            <%= image_tag "img/icon-dot-gov.svg", alt: "Dot gov", class: "usa-banner-icon usa-media_block-img" %>
+            <%= image_tag "/vendor/uswds/img/icon-dot-gov.svg", alt: "Dot gov", class: "usa-banner-icon usa-media_block-img" %>
             <div class="usa-media_block-body">
               <p>
                 <strong>The .gov means it’s official.</strong>
@@ -35,7 +37,7 @@
             </div>
           </div>
           <div class="usa-banner-guidance-ssl usa-width-one-half">
-            <%= image_tag "img/icon-https.svg", alt: "SSL", class: "usa-banner-icon usa-media_block-img" %>
+            <%= image_tag "/vendor/uswds/img/icon-https.svg", alt: "SSL", class: "usa-banner-icon usa-media_block-img" %>
             <div class="usa-media_block-body">
               <p>This site is also protected by an SSL (Secure Sockets Layer) certificate that’s been signed by the U.S. government. The <strong>https://</strong> means all transmitted data is encrypted  — in other words, any information or browsing history that you provide is transmitted securely.</p>
             </div>
@@ -55,7 +57,7 @@
     <nav role="navigation" class="usa-nav">
       <div class="usa-nav-inner">
         <button class="usa-nav-close">
-          <%= image_tag "img/close.svg", alt: "close" %>
+          <%= image_tag "/vendor/uswds/img/close.svg", alt: "close" %>
         </button>
         <ul class="usa-nav-primary usa-accordion">
           <li>

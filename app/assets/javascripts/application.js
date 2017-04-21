@@ -15,7 +15,6 @@
 //= require turbolinks
 //= require_tree .
 //
-//= require js/uswds
 //= require Chart
 
 var CodeCentral = CodeCentral || {};
