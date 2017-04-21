@@ -14,8 +14,20 @@ To update NPM packages, run `rake assets:npm`. This task will grab the latest NP
 
 In order to pull project metadata from GitHub, you must set GitHub authentication information in the app's environment variables. Either of these will do:
 
-* `GITHUB_ACCESS_TOKEN`: A [personal access token](https://github.com/settings/tokens)
+* `GITHUB_ACCESS_TOKEN`: An [access token](https://github.com/settings/tokens)
 * `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET`: An [OAuth application](https://github.com/settings/developers) ID and secret
+
+You can use a tool to create an access token for the app using an OAuth client ID and secret.
+
+Example using curl:
+
+* `YOUR_USERNAME` is your GitHub username (you will be prompted for your password separately)
+* `YOUR_OTP` is your current 2FA token, if you have 2FA enabled on your organization (remove the `-H` argument if you don't use 2FA)
+* `CLIENT_ID` and `CLIENT_SECRET` are from the [GitHub OAuth application settings]((https://github.com/settings/developers)
+
+```bash
+curl --user "YOUR_USERNAME" -H "X-GitHub-OTP: YOUR_OTP" -X POST -d '{ "note": "CodeCentral", "client_id": "CLIENT_ID", "client_secret": "CLIENT_SECRET", "scopes": ["repo"] }' "https://api.github.com/authorizations"
+```
 
 ### Harvesting Metadata
 
