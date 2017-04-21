@@ -10,6 +10,12 @@ To update NPM packages, run `rake assets:npm`. This task will grab the latest NP
 
 ## Deployment
 
+### Configuration
+
+Set the following environment variable:
+
+* `AGENCY_ACRONYM`: Your agency acronym used in the [code.json](https://code.gov/#/policy-guide/docs/compliance/inventory-code) output (e.g., "GSA")
+
 ### GitHub API authentication
 
 In order to pull project metadata from GitHub, you must set GitHub authentication information in the app's environment variables. Either of these will do:
