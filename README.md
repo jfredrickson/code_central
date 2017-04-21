@@ -4,9 +4,9 @@ A dashboard for CodeInventory.
 
 ## Development
 
-### USWDS
+### NPM Packages
 
-To update USWDS, use `npm` and `package.json` to grab the desired USWDS version, then run `rake npm:assets` to copy the new USWDS files into the `vendor/assets` directory.
+To update NPM packages, run `rake assets:npm`. This task will grab the latest NPM packages and install them to `vendor/assets`. See the [assets.rake](/lib/tasks/assets.rake) task definitions for specifics on which packages come from NPM.
 
 ## Deployment
 
