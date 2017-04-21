@@ -22,7 +22,7 @@
           <td>
             <span class="chart-legend-color">&nbsp;</span>
             <span class="chart-value"><%= @open_source_count %></span>
-            (<%= number_to_percentage(100 * @open_source_count / @project_count.to_f, precision: 2) %>)
+            (<%= @open_source_percentage %>%)
           </td>
         </tr>
         <tr>
@@ -30,7 +30,7 @@
           <td>
             <span class="chart-legend-color">&nbsp;</span>
             <span class="chart-value"><%= @closed_source_count %></span>
-            (<%= number_to_percentage(100 * @closed_source_count / @project_count.to_f, precision: 2) %>)
+            (<%= @closed_source_percentage %>%)
           </td>
         </tr>
         <tr class="totals">
@@ -64,7 +64,7 @@
           <td>
             <span class="chart-legend-color">&nbsp;</span>
             <span class="chart-value"><%= @gov_reuse_count %></span>
-            (<%= number_to_percentage(100 * @gov_reuse_count / @project_count.to_f, precision: 2) %>)
+            (<%= @gov_reuse_percentage %>%)
           </td>
         </tr>
         <tr>
@@ -72,7 +72,7 @@
           <td>
             <span class="chart-legend-color">&nbsp;</span>
             <span class="chart-value"><%= @non_gov_reuse_count %></span>
-            (<%= number_to_percentage(100 * @non_gov_reuse_count / @project_count.to_f, precision: 2) %>)
+            (<%= @non_gov_reuse_percentage %>%)
           </td>
         </tr>
         <tr class="totals">
