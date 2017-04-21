@@ -9,6 +9,7 @@ class MetadataHarvester
     raise ArgumentError, "GitHub organization name cannot be nil" if @github_org.nil?
     raise ArgumentError, "authentication info must contain an access token, or a client id and client secret" unless auth_valid?
     @project_org = project_org || @github_org
+    @source = source("GitHub")
   end
 
   def auth_valid?
@@ -18,7 +19,7 @@ class MetadataHarvester
 
   def harvest
     organization_repositories.each do |repo|
-      project = Project.find_or_initialize_by(source: source("GitHub"), source_identifier: repo[:id])
+      project = Project.find_or_initialize_by(source: @source, source_identifier: repo[:id])
       if project.harvested_at.nil? || project.harvested_at < repo[:updated_at]
         metadata = project_metadata(repo[:full_name])
         metadata["organization"] = @project_org
@@ -45,12 +46,13 @@ class MetadataHarvester
   end
 
   def source(source_name)
-    Source.find_by(name: source_name)
+    Source.find_or_create_by(name: source_name)
   end
 
   # Creates/updates a project with metadata from CodeInventory
   def create_or_update!(project, metadata)
     project.update_from_metadata(metadata)
+    project.source = @source
     project.harvested_at = DateTime.now
     project.save
   end
