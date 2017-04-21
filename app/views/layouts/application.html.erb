@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CodeCentral</title>
   <%= csrf_meta_tags %>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= stylesheet_link_tag    '/vendor/uswds/css/uswds', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_include_tag '/vendor/uswds/js/uswds', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= stylesheet_link_tag    '/vendor/uswds/css/uswds', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= javascript_include_tag '/vendor/uswds/js/uswds' %>
 </head>
 <body data-controller="<%= controller_name %>" data-action="<%= action_name %>" class="<%= "#{controller_name}-#{action_name}" %>">
   <a class="usa-skipnav" href="#main-content">Skip to main content</a>
