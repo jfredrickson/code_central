@@ -1,8 +1,8 @@
 require "fileutils"
 
-namespace :npm do
+namespace :assets do
   desc "Copy npm vendor assets to vendor directory"
-  task :assets do
+  task :npm do
     sh "npm install"
     # USWDS
     mkdir_p "vendor/assets/uswds"
