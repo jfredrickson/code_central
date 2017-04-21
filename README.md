@@ -15,17 +15,9 @@ To update NPM packages, run `rake assets:npm`. This task will grab the latest NP
 Set the following environment variable:
 
 * `AGENCY_ACRONYM`: Your agency acronym used in the [code.json](https://code.gov/#/policy-guide/docs/compliance/inventory-code) output (e.g., "GSA")
+* `GITHUB_ACCESS_TOKEN`: A [GitHub access token](https://github.com/settings/tokens) with "repo" scope (the "repo" scope is required if you want to inventory your private repositories)
 
-### GitHub API authentication
-
-In order to pull project metadata from GitHub, you must set GitHub authentication information in the app's environment variables. Either of these will do:
-
-* `GITHUB_ACCESS_TOKEN`: An [access token](https://github.com/settings/tokens)
-* `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET`: An [OAuth application](https://github.com/settings/developers) ID and secret
-
-You can use a tool to create an access token for the app using an OAuth client ID and secret.
-
-Example using curl:
+You can use a tool to create an access token for the app using an OAuth client ID and secret. Or you can use a personal access token. See the [GitHub documentation](https://developer.github.com/v3/oauth_authorizations/#create-a-new-authorization) for more details. Here is a brief example using `curl` to obtain an authorization token:
 
 * `YOUR_USERNAME` is your GitHub username (you will be prompted for your password separately)
 * `YOUR_OTP` is your current 2FA token, if you have 2FA enabled on your organization (remove the `-H` argument if you don't use 2FA)
@@ -51,4 +43,10 @@ Harvest metadata from the presidential-innovation-fellows GitHub organization, b
 
 ```bash
 $ rake metadata:harvest[presidential-innovation-fellows,PIF]
+```
+
+This can be done on Cloud Foundry using a one-off task such as:
+
+```bash
+$ cf run-task APPNAME "bundle exec rake metadata:harvest[ORG]"
 ```
