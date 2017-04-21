@@ -6,7 +6,7 @@ A dashboard for CodeInventory.
 
 ### NPM Packages
 
-To update NPM packages, run `rake assets:npm`. This task will grab the latest NPM packages and install them to `vendor/assets`. See the [assets.rake](/lib/tasks/assets.rake) task definitions for specifics on which packages come from NPM.
+To update NPM packages, run `rake assets:npm`. This task will grab the latest NPM packages and install them to the `vendor` or `public` folders as appropriate. See the [assets.rake](/lib/tasks/assets.rake) task definitions for specifics on which packages come from NPM.
 
 ## Deployment
 
