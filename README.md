@@ -12,7 +12,7 @@ To update NPM packages, run `rake assets:npm`. This task will grab the latest NP
 
 ### Configuration
 
-Set the following environment variable:
+Set the following environment variables:
 
 * `AGENCY_ACRONYM`: Your agency acronym used in the [code.json](https://code.gov/#/policy-guide/docs/compliance/inventory-code) output (e.g., "GSA")
 * `GITHUB_ACCESS_TOKEN`: A [GitHub access token](https://github.com/settings/tokens) with "repo" scope (the "repo" scope is required if you want to inventory your private repositories)
