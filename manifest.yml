@@ -1,0 +1,4 @@
+---
+applications:
+- name: code-central
+  memory: 256M
