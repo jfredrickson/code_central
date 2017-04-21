@@ -100,7 +100,8 @@ class MetadataHarvesterTest < ActiveSupport::TestCase
     project1_metadata = project1.as_json
 
     project = projects(:project_one)
-    @harvester.create_or_update!(project, project1_metadata)
+    result = @harvester.create_or_update!(project, project1_metadata)
     assert project.description =~ /shiny new description/
+    assert result
   end
 end
