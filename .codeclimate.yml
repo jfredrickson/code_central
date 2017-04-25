@@ -1,2 +1,10 @@
+---
+engines:
+  rubocop:
+    enabled: true
+  eslint:
+    enabled: true
+  csslint:
+    enabled: true
 exclude_paths:
-  - '/public/vendor'
+  - "/public/vendor"
