@@ -19,6 +19,8 @@ table caption {
   margin: 0.5em 0;
 }
 
-table tr.totals * {
-  font-weight: bold;
+table .totals {
+  th, td {
+    font-weight: bold;
+  }
 }
