@@ -2,6 +2,7 @@
 
 [![Travis CI](https://api.travis-ci.org/jfredrickson5/code_central.svg?branch=master)](https://travis-ci.org/jfredrickson5/code_central)
 [![Code Climate](https://codeclimate.com/github/jfredrickson5/code_central/badges/gpa.svg)](https://codeclimate.com/github/jfredrickson5/code_central)
+[![Test Coverage](https://codeclimate.com/github/jfredrickson5/code_central/badges/coverage.svg)](https://codeclimate.com/github/jfredrickson5/code_central/coverage)
 
 A dashboard for CodeInventory.
 
