@@ -1,5 +1,7 @@
 # CodeCentral
 
+[![Code Climate](https://codeclimate.com/github/jfredrickson5/code_central/badges/gpa.svg)](https://codeclimate.com/github/jfredrickson5/code_central)
+
 A dashboard for CodeInventory.
 
 ## Development
