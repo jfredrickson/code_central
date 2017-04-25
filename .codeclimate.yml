@@ -7,5 +7,10 @@ engines:
   csslint:
     enabled: true
 exclude_paths:
-  - "/public/vendor/"
-  - "/vendor/"
+- "/public/vendor/"
+- "/vendor/"
+ratings:
+  paths:
+  - "app/**"
+  - "lib/**"
+  - "**.rb"
