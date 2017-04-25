@@ -26,6 +26,8 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
+  username: <%= ENV["TRAVIS"] ? "travis" : "code_central" %>
+  password: <%= ENV["TRAVIS"] ? "" : "code_central" %>
   database: code_central_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
@@ -49,6 +51,4 @@ test:
 #
 production:
   <<: *default
-  database: code_central_production
-  username: code_central
-  password: <%= ENV['CODE_CENTRAL_DATABASE_PASSWORD'] %>
+  url: <%= ENV["DATABASE_URL"] %>
