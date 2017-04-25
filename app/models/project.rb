@@ -43,7 +43,7 @@ class Project < ApplicationRecord
 
   # Format the project's JSON based on the Code.gov schema.
   def as_json(options = {})
-    data = super(only: [:name, :description, :repository, :license, :organization, :tags])
+    data = super(options.merge(only: [:name, :description, :repository, :license, :organization, :tags]))
     data.merge({
       "openSourceProject" => self.open_source,
       "governmentWideReuseProject" => self.government_wide_reuse,
