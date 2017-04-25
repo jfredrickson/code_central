@@ -7,4 +7,5 @@ engines:
   csslint:
     enabled: true
 exclude_paths:
-  - "/public/vendor"
+  - "/public/vendor/"
+  - "/vendor/"
