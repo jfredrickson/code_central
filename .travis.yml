@@ -6,3 +6,6 @@ services:
   - mysql
 before_install:
   - "mysql -e 'CREATE DATABASE code_central_test;'"
+addons:
+  code_climate:
+    repo_token: 3e5c7686646743f17832a81a91f5ed2d7385a27f6fdd6dedb5a7cefa1ceed9ba
