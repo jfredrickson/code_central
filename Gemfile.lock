@@ -47,7 +47,7 @@ GEM
     codeinventory (0.2.1)
       octokit (~> 4.6)
       thor (~> 0.19)
-    codeinventory-github (0.2.3)
+    codeinventory-github (0.3.0)
       codeinventory (~> 0.2.0)
       octokit (~> 4.6)
     coffee-rails (4.2.1)
@@ -180,7 +180,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   codeinventory (~> 0.2)
-  codeinventory-github (~> 0.2)
+  codeinventory-github (~> 0.3)
   coffee-rails (~> 4.2)
   jbuilder (~> 2.5)
   jquery-rails
