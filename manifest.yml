@@ -2,6 +2,6 @@
 applications:
 - name: code-central
   memory: 256M
-  command: bundle exec rake cf:migrate && bundle exec rails s -p $PORT -e $RAILS_ENV
+  command: bundle exec rake cf:migrate && bundle exec rake cf:crono && bundle exec rails s -p $PORT -e $RAILS_ENV
   services:
   - code-central-db

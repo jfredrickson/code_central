@@ -1,0 +1,17 @@
+development:
+  jobs:
+    github:
+      - github_org: GSA
+      - github_org: 18F
+      - github_org: presidential-innovation-fellows
+        project_org: PIF
+
+test:
+
+production:
+  jobs:
+    github:
+      - github_org: GSA
+      - github_org: 18F
+      - github_org: presidential-innovation-fellows
+        project_org: PIF

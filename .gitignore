@@ -25,3 +25,6 @@
 
 # Ignore code coverage results
 /coverage
+
+# Ignore deployment-specific config
+/config/harvest.yml
