@@ -18,7 +18,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'octokit', '~> 4.7'
 gem 'codeinventory', '~> 0.2'
-gem 'codeinventory-github', '~> 0.2'
+gem 'codeinventory-github', '~> 0.3'
 gem 'crono', '~> 1.1'
 gem 'daemons'
 
